@@ -1,0 +1,20 @@
+<h1>Operations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @operations.each do |operation| %>
+      <tr>
+        <td><%= operation.name %></td>
+        <td><%= operation.amount %></td>
+        <td><%= operation.category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

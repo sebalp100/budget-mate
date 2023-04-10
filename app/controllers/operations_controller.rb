@@ -4,24 +4,24 @@ class OperationsController < ApplicationController
   end
 
   def new
-    @operation = Operation.new
+    @operation = current_user.operations.build
     @categories = current_user.categories
   end
 
   def create
-    @operation = current_user.authored_operations.build(operation_params)
-  
+    @operation = current_user.operations.build(operation_params)
+    @categories = current_user.categories
     if @operation.save
-      redirect_to category_operations_path(@operation.categories.first), notice: "Operation created."
+      redirect_to "/operations"
     else
-      @categories = current_user.categories
+      puts @operation.errors.full_messages # <-- add this line
       render :new
     end
   end
-  
+
   private
-  
+
   def operation_params
-    params.require(:operation).permit(:name, :amount, category_id: [])
+    params.require(:operation).permit(:name, :amount, :category_id, :author_id)
   end
 end
