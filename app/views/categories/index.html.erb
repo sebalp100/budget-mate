@@ -1,0 +1,7 @@
+<% @categories.each do |category| %>
+  <li>
+    <%= link_to category.name, category_path(category) %>
+    <%= category.icon %>
+    <p>Total amount: <%= number_to_currency(@total_amount_by_category[category.name]) %></p>
+  </li>
+<% end %>

@@ -1,20 +1,26 @@
 class OperationsController < ApplicationController
   def index
-    @operations = Operation.all
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @operations = @category.operations.where(author: current_user)
+    else
+      @operations = current_user.operations
+    end
   end
 
   def new
     @operation = current_user.operations.build
     @categories = current_user.categories
+    @selected_category = Category.find(params[:category_id]) if params[:category_id].present?
   end
 
   def create
     @operation = current_user.operations.build(operation_params)
     @categories = current_user.categories
     if @operation.save
-      redirect_to "/operations"
+      redirect_to operations_path(category_id: @operation.category_id)
     else
-      puts @operation.errors.full_messages # <-- add this line
+      puts @operation.errors.full_messages
       render :new
     end
   end
