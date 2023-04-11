@@ -1,7 +1,11 @@
 <% @categories.each do |category| %>
-  <li>
-    <%= link_to category.name, category_path(category) %>
-    <%= category.icon %>
-    <p>Total amount: <%= number_to_currency(@total_amount_by_category[category.name]) %></p>
-  </li>
+  <%= link_to category_operations_path(category_id: category.id), class: "grid grid-cols-3 gap-5 w-full m-2 p-2 py-4 justify-between bg-white" do %>
+        <div class="text-4xl flex justify-center items-center bg-yellow-100 h-16 w-16 text-center">
+          <%= category.icon %>
+        </div>
+        <p><%= category.name %></p>
+        <p class="flex justify-center font-semibold"><%= number_to_currency(@total_amount_by_category[category.name]) %></p>
+  <% end %>
 <% end %>
+
+<%= link_to "New Category", new_category_path, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>

@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :redirect_unauthenticated_user_to_custom_page
+
   def index
     @categories = current_user.categories
     @operations_by_category = {}
@@ -18,5 +20,34 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @operations = Operation.where(category_id: @category.id)
     @total_amount = @operations.sum(:amount)
+  end
+
+  def new
+    @category = Category.new
+  end
+
+  def create
+    @category = current_user.categories.build(category_params)
+  
+    if Category.exists?(name: @category.name, user_id: current_user.id)
+      flash[:notice] = "Category already exists"
+      render :new
+    elsif @category.save
+      redirect_to categories_path, notice: "Category was successfully created."
+    else
+      render :new
+    end
+  end
+  
+  private
+  
+  def category_params
+    params.require(:category).permit(:name, :icon, :user_id)
+  end
+
+  def redirect_unauthenticated_user_to_custom_page
+    unless user_signed_in?
+      redirect_to "/users/"
+    end
   end
 end

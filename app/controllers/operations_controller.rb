@@ -1,8 +1,11 @@
 class OperationsController < ApplicationController
+  before_action :redirect_unauthenticated_user_to_custom_page
+
   def index
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
-      @operations = @category.operations.where(author: current_user)
+      @operations = current_user.operations.where(category: @category)
+      @total_amount = @operations.sum(:amount)
     else
       @operations = current_user.operations
     end
@@ -11,14 +14,17 @@ class OperationsController < ApplicationController
   def new
     @operation = current_user.operations.build
     @categories = current_user.categories
-    @selected_category = Category.find(params[:category_id]) if params[:category_id].present?
+    @category = Category.find(params[:category_id]) if params[:category_id].present?
   end
-
+  
   def create
     @operation = current_user.operations.build(operation_params)
     @categories = current_user.categories
+    @category = Category.find(params[:operation][:category_id]) if params[:operation][:category_id].present?
+    @operation.category = @category
     if @operation.save
-      redirect_to operations_path(category_id: @operation.category_id)
+      Categorization.create(operation: @operation, category: @category)
+      redirect_to category_operations_path(@operation.category)
     else
       puts @operation.errors.full_messages
       render :new
@@ -29,5 +35,11 @@ class OperationsController < ApplicationController
 
   def operation_params
     params.require(:operation).permit(:name, :amount, :category_id, :author_id)
+  end
+
+  def redirect_unauthenticated_user_to_custom_page
+    unless user_signed_in?
+      redirect_to "/users/"
+    end
   end
 end
