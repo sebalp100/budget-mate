@@ -2,14 +2,12 @@ class OperationsController < ApplicationController
   before_action :redirect_unauthenticated_user_to_custom_page
 
   def index
-    @categories = current_user.categories
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
       @operations = current_user.operations.includes(:category).where(category: @category)
       @total_amount = @operations.sum(:amount)
     else
       @operations = current_user.operations
-      @total_amount = @operations.sum(:amount)
     end
     @page_name = "Transactions"
   end
