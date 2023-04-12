@@ -9,12 +9,14 @@ class OperationsController < ApplicationController
     else
       @operations = current_user.operations
     end
+    @page_name = "Transactions"
   end
 
   def new
     @operation = current_user.operations.build
     @categories = current_user.categories
     @category = Category.find(params[:category_id]) if params[:category_id].present?
+    @page_name = "Transactions"
   end
   
   def create

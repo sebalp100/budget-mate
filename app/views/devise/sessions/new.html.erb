@@ -1,7 +1,5 @@
 <div class="flex flex-col items-center w-full">
 
-<div class="flex w-full h-14 bg-sky-600 justify-center items-center text-white">LOGIN</div>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "w-full flex flex-col" }) do |f| %>
   <div class="field">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "mt-4 border-1 border-slate-50 block w-full bg-white focus:ring focus:ring-gray-200 focus:ring-opacity-50" %>

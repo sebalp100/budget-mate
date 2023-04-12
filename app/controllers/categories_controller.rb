@@ -14,16 +14,19 @@ class CategoriesController < ApplicationController
       operations = @operations_by_category[category.id]
       @total_amount_by_category[category.name] = operations.sum(:amount)
     end
+    @page_name = "Categories"
   end
 
   def show
     @category = Category.find(params[:id])
     @operations = Operation.where(category_id: @category.id)
     @total_amount = @operations.sum(:amount)
+    @page_name = "Categories"
   end
 
   def new
     @category = Category.new
+    @page_name = "New Category"
   end
 
   def create

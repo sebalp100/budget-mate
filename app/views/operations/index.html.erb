@@ -1,3 +1,5 @@
+<% @operations = @operations.sort_by { |operation| operation.created_at }.reverse %>
+
 <h1><%= @category.name if @category %></h1>
 <%= @total_amount %>
 <table>
@@ -18,5 +20,3 @@
 </table>
 
 <%= link_to 'New Transaction', new_operation_path(category_id: @category&.id), class: 'button' %>
-
-<%= link_to 'Home', "/" %>
