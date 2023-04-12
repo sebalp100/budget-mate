@@ -124,8 +124,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.1.1)
-      railties (>= 6.0.0)
     json (2.6.3)
     jsonapi-renderer (0.2.2)
     loofah (2.20.0)
@@ -301,7 +299,6 @@ DEPENDENCIES
   factory_bot_rails
   faker
   jbuilder
-  jsbundling-rails
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
