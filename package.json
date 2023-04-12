@@ -3,8 +3,7 @@
   "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
-    "@hotwired/turbo-rails": "^7.3.0",
-    "esbuild": "^0.17.15"
+    "@hotwired/turbo-rails": "^7.3.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
@@ -12,6 +11,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
+    "esbuild": "^0.17.16",
     "postcss": "^8.4.21",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
