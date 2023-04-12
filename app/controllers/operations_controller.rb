@@ -9,6 +9,7 @@ class OperationsController < ApplicationController
       @total_amount = @operations.sum(:amount)
     else
       @operations = current_user.operations
+      @total_amount = @operations.sum(:amount)
     end
     @page_name = "Transactions"
   end
