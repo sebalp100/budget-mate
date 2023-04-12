@@ -1,4 +1,4 @@
-<div class="w-full mb-12 overflow-x-hidden overflow-y-scroll scrollbar-hide">
+<div class="w-full mb-12 overflow-x-hidden overflow-y-hidden">
 <% @categories.each do |category| %>
   <%= link_to category_operations_path(category_id: category.id), class: "grid grid-cols-3 gap-5 w-screen p-4 my-2 justify-between bg-white" do %>
         <div class="text-4xl flex justify-center items-center bg-yellow-100 h-16 w-16 text-center">
@@ -9,6 +9,6 @@
   <% end %>
 <% end %>
 </div>
-<div class="fixed bottom-0 w-full bg-green-500 text-center hover:bg-green-700 py-6">
-<%= link_to "New Category", new_category_path, class: "text-white font-bold py-3 border-2 border-white" , style: "padding-left: 32%; padding-right: 32%;" %>
+<div class="fixed bottom-0 w-full bg-lime-600 text-center hover:bg-lime-700 py-6">
+<%= link_to "New Category", new_category_path, class: "text-white py-4 border-2 border-white" , style: "padding-left: 32%; padding-right: 32%;" %>
 </div>

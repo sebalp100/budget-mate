@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :redirect_unauthenticated_user_to_custom_page
 
   def index
-    @categories = current_user.categories
+    @categories = current_user.categories.includes(:operations)
     @operations_by_category = {}
     @categories.each do |category|
       operations = Operation.where(category_id: category.id)
@@ -18,8 +18,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
-    @operations = Operation.where(category_id: @category.id)
+    @category = Category.includes(:operations).find(params[:id])
+    @operations = @category.operations
     @total_amount = @operations.sum(:amount)
     @page_name = "Categories"
   end

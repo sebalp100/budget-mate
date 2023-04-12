@@ -40,15 +40,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_224459) do
   end
 
   create_table "operations", force: :cascade do |t|
-    t.integer "author_id"
     t.string "name"
     t.decimal "amount", default: "0.0"
     t.bigint "category_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_operations_on_author_id"
     t.index ["category_id"], name: "index_operations_on_category_id"
-    t.index ["user_id"], name: "index_operations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,5 +67,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_224459) do
   add_foreign_key "categorizations", "categories"
   add_foreign_key "categorizations", "operations"
   add_foreign_key "operations", "categories"
-  add_foreign_key "operations", "users"
+  add_foreign_key "operations", "users", column: "author_id", name: "author_id"
 end
