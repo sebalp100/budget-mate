@@ -5,5 +5,13 @@ class Operation < ApplicationRecord
   has_many :categorizations, dependent: :destroy
   has_many :categories, through: :categorizations
 
+  before_save :set_user_id
+
+  private
+
+  def set_user_id
+    self.user_id = author_id
+  end
+
   validates :name, :amount, presence: true
 end
