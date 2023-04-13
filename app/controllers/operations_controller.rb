@@ -9,16 +9,16 @@ class OperationsController < ApplicationController
     else
       @operations = current_user.operations
     end
-    @page_name = "Transactions"
+    @page_name = 'Transactions'
   end
 
   def new
     @operation = current_user.operations.build
     @categories = current_user.categories
     @category = Category.find(params[:category_id]) if params[:category_id].present?
-    @page_name = "Transactions"
+    @page_name = 'Transactions'
   end
-  
+
   def create
     @operation = current_user.operations.build(operation_params)
     @categories = current_user.categories
@@ -40,8 +40,8 @@ class OperationsController < ApplicationController
   end
 
   def redirect_unauthenticated_user_to_custom_page
-    unless user_signed_in?
-      redirect_to "/users/"
-    end
+    return if user_signed_in?
+
+    redirect_to '/users/'
   end
 end
