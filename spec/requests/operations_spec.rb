@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'Operations', type: :request do
   let(:user) { FactoryBot.create(:user) }
   let!(:category2) { FactoryBot.create(:category, icon: '💳', name: 'Food', user:) }

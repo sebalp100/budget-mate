@@ -19,7 +19,6 @@ RSpec.describe Operation, type: :model do
     expect(subject).to_not be_valid
   end
 
-
   it 'belongs to a user' do
     expect(subject.author).to eq(user)
   end

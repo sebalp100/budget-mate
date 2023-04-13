@@ -18,7 +18,6 @@ RSpec.describe Category, type: :model do
     expect(subject).to_not be_valid
   end
 
-
   it 'belongs to a user' do
     expect(subject.user).to eq(user)
   end
