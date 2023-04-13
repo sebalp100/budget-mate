@@ -3,6 +3,8 @@
 <div align="center">
 
   <h3><b>BudgetMate</b></h3>
+  <img align="center" src="https://user-images.githubusercontent.com/111214189/231619850-f45b1c75-c757-4be6-b224-18a0d4ffa388.png" />
+
 
 </div>
 
@@ -10,7 +12,7 @@
 
 # 📗 Table of Contents
 
-- [� Table of Contents](#-table-of-contents)
+- [Table of Contents](#-table-of-contents)
 - [📖 My Blog App ](#-my-blog-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
