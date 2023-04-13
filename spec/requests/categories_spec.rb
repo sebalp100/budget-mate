@@ -1,10 +1,7 @@
 require 'rails_helper'
 
-
-RSpec.describe 'Operations', type: :request do
+RSpec.describe 'Categories', type: :request do
   let(:user) { FactoryBot.create(:user) }
-  let!(:category2) { FactoryBot.create(:category, icon: '💳', name: 'Food', user:) }
-  let!(:operation1) { FactoryBot.create(:operation, name: 'Cake', author: user, category: category2) }
 
   before do
     sign_in user
@@ -12,14 +9,14 @@ RSpec.describe 'Operations', type: :request do
 
   describe 'GET #index' do
     it 'returns a success response' do
-      get category_operations_path(category2)
+      get '/'
       expect(response).to be_successful
     end
   end
 
   describe 'GET #new' do
     it 'returns a success response' do
-      get new_operation_path
+      get '/categories/new'
       expect(response).to be_successful
     end
   end

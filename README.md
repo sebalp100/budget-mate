@@ -159,6 +159,10 @@ Give a ⭐️ if you like this project!
 
 - Hat tip to anyone whose code was used
 - Microverse
+- Original design idea by Gregoire Vella on Behance https://www.behance.net/gregoirevella
+- <a href="https://www.flaticon.com/free-icons/back" title="back icons">Back icons created by Ilham Fitrotul Hayat - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/application" title="application icons">Application icons created by Aysel - Flaticon</a>
+- <a href="https://www.flaticon.es/iconos-gratis/lupa" title="lupa iconos">Lupa iconos creados por Ayub Irawan - Flaticon</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

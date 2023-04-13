@@ -9,6 +9,10 @@ class Category < ApplicationRecord
     name.parameterize
   end
 
+  def total_amount
+    operations.sum(:amount)
+  end
+
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :icon, presence: true
 end
