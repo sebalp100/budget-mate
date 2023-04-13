@@ -5,7 +5,7 @@ class OperationsController < ApplicationController
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
       @operations = current_user.operations.includes(:category).where(category: @category)
-      @total_amount = @operations.sum(:amount)
+      @total_amount = @operations&.sum(:amount) || 0
     else
       @operations = current_user.operations
     end
